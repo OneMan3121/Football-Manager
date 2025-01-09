@@ -29,5 +29,5 @@ This is a test project for managing football teams and players, built with Java,
 
 1. **Clone the repository**:
    ```bash
-   git clone 
-   cd TODO: add rep name
+   git clone https://github.com/OneMan3121/Football-Manager.git
+   cd Football-Manager
