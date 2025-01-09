@@ -22,31 +22,29 @@ public class TeamService {
     private final UserRepository userRepository;
     private final TeamMapper teamMapper;
 
-    // Створення нової команди
     public TeamRespDTO createTeam(String username, TeamReqDTO teamReqDTO) {
         User owner = userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("User not found with username: " + username));
 
         Team team = teamMapper.toEntity(teamReqDTO);
-        team.setOwner(owner); // Додаємо власника команди
+        team.setOwner(owner);
 
         return teamMapper.toDTO(teamRepository.save(team));
     }
 
-    // Список команд
     public List<TeamRespDTO> getTeamsByOwner(String username) {
-        return teamRepository.findByOwnerUsername(username).stream()
-                .map(teamMapper::toDTO) // Перетворення команди у DTO
+        return teamRepository.findByOwnerUsernameAndIsDeletedFalse(username).stream()
+                .map(teamMapper::toDTO)
                 .collect(Collectors.toList());
     }
 
-    // Оновлення команди
+
     @Transactional
     public TeamRespDTO updateTeam(Long teamId, TeamReqDTO updatedTeam) {
         Team existingTeam = teamRepository.findById(teamId)
                 .orElseThrow(() -> new IllegalArgumentException("Team not found with ID: " + teamId));
 
-        // Оновлюємо поля
+
         existingTeam.setName(updatedTeam.getName());
         existingTeam.setBudget(updatedTeam.getBudget());
         existingTeam.setCommissionPercentage(updatedTeam.getCommissionPercentage());
@@ -54,11 +52,21 @@ public class TeamService {
         return teamMapper.toDTO(existingTeam);
     }
 
-    // Видалення команди
+
     public void deleteTeam(Long teamId) {
         if (!teamRepository.existsById(teamId)) {
             throw new IllegalArgumentException("Team not found with ID: " + teamId);
         }
         teamRepository.deleteById(teamId);
+    }
+
+
+    public TeamRespDTO removeTeam(Long teamId) {
+        Team existingTeam = teamRepository.findByIdAndIsDeletedFalse(teamId)
+                .orElseThrow(() -> new IllegalArgumentException("Team not found with ID: " + teamId));
+
+        existingTeam.setIsDeleted(true);
+        teamRepository.save(existingTeam);
+        return teamMapper.toDTO(existingTeam);
     }
 }

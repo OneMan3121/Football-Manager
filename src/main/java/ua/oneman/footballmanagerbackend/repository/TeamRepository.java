@@ -6,13 +6,19 @@ import org.springframework.stereotype.Repository;
 import ua.oneman.footballmanagerbackend.model.Team;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
-    // Знаходимо всі команди одного користувача за username
+
     List<Team> findByOwnerUsername(String ownerUsername);
 
-    // Знаходимо команду за її унікальною назвою
+
     Team findByName(String name);
+
+    List<Team> findByOwnerUsernameAndIsDeletedFalse(String username);
+
+
+    Optional<Team> findByIdAndIsDeletedFalse(Long teamId);
 }
