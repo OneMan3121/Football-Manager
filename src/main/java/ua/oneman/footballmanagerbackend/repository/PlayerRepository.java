@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-    // Знаходимо гравців за командою
     List<Player> findByTeamId(Long teamId);
+
+    List<Player> findByTeamIdAndIsDeletedFalse(Long teamId);
+
+    List<Player> findByIsDeletedFalse();
 }

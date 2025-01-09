@@ -1,20 +1,9 @@
 spring:
   security:
     oauth2:
-      client:
-        registration:
-          cognito:
-            client-id: ${COGNITO_CLIENT_ID}
-            client-secret: ${COGNITO_CLIENT_SECRET}
-            scope:
-              - email
-              - openid
-              - phone
-            redirect-uri: https://d84l1y8p4kdic.cloudfront.net
-        provider:
-          cognito:
-            issuerUri: ${COGNITO_ISSUER_URI}
-            user-name-attribute: username
+      resourceserver:
+        jwt:
+          issuer-uri: ${COGNITO_ISSUER_URI}
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}

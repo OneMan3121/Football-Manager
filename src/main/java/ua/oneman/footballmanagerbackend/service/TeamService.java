@@ -46,7 +46,7 @@ public class TeamService {
 
 
         existingTeam.setName(updatedTeam.getName());
-        existingTeam.setBudget(updatedTeam.getBudget());
+        existingTeam.setBalance(updatedTeam.getBalance());
         existingTeam.setCommissionPercentage(updatedTeam.getCommissionPercentage());
 
         return teamMapper.toDTO(existingTeam);

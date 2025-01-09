@@ -16,14 +16,14 @@ import java.util.List;
 public class TeamController {
 
     private final TeamService teamService;
-    // TODO: get username from jwt token change when setup sec
+
     @PostMapping("/{username}")
     public ResponseEntity<TeamRespDTO> createTeam(
             @PathVariable String username,
             @Valid @RequestBody TeamReqDTO teamReqDTO) {
         return ResponseEntity.ok(teamService.createTeam(username, teamReqDTO));
     }
-    // TODO: get username from jwt token change when setup sec
+
     @GetMapping("/{username}")
     public ResponseEntity<List<TeamRespDTO>> getTeamsByOwner(@PathVariable String username) {
         return ResponseEntity.ok(teamService.getTeamsByOwner(username));

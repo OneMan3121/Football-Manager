@@ -3,6 +3,7 @@ package ua.oneman.footballmanagerbackend.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +28,9 @@ public class User {
 
     @Column(nullable = false)
     private String lastName;
+
+    @Column(name = "balance", nullable = false)
+    private BigDecimal balance = BigDecimal.ZERO;
 
     @Column
     private String avatarUrl;

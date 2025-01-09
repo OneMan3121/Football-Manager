@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Date;
 
 @Entity
 @Table(name = "teams")
@@ -20,8 +20,8 @@ public class Team {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false)
-    private Double budget;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal balance;
 
     @Column(name = "commission_percentage", nullable = false)
     private Double commissionPercentage;
@@ -56,4 +56,5 @@ public class Team {
     protected void onUpdate() {
         this.updatedAt = LocalDateTime.now();
     }
+
 }
