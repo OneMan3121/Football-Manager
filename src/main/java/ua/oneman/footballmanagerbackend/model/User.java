@@ -39,4 +39,10 @@ public class User {
     @Column
     private LocalDateTime lastActiveDate;
 
+    @Column(name = "is_deleted", nullable = false)
+    private Boolean isDeleted = false;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
+
 }

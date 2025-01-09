@@ -22,5 +22,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
+aws:
+  s3:
+    bucket-name: footballmanager-bucket
+    region: eu-central-1
+  credentials:
+    access-key: ${S3_ACCESS_KEY}
+    secret-key: ${S3_SECRET_KEY}
 
