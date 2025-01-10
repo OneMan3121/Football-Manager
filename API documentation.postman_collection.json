@@ -1,0 +1,627 @@
+{
+	"info": {
+		"_postman_id": "b0726c7f-65d3-42e7-b03a-78e21bb83a91",
+		"name": "API documentation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14002793"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/users/{userId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"users",
+								"{userId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\": \"new.email@example.com\", \"password\": \"newsecurepassword\"}"
+						},
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/users/{userId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"users",
+								"{userId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/users/{userId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"users",
+								"{userId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Here is the API documentation for the `UserController` endpoints in **Markdown format** for Postman usage:\n\n---\n\n# UserController API Documentation\n\n## Base URL\n\n```\nhttp://localhost:{port}/api/v1/protected/users\n\n ```\n\n---\n\n### 1\\. **POST** **`/api/v1/protected/users`**\n\n**Description:** Create a new user with the provided details.\n\n- **Method:** `POST`\n    \n\n- **Request:**\n    \n    - **URL:** `http://localhost:{port}/api/v1/protected/users`\n        \n    \n    - **Headers:**\n        \n        - `Authorization: Bearer`\n            \n        \n        - `Content-Type: application/json`\n            \n        \n    \n    - **Body (JSON):**\n        \n    \n\n```\n{    \"username\": \"john_doe\",    \"email\": \"john.doe@example.com\",    \"password\": \"securepassword\"}\n\n ```\n\n- **Response:**\n    \n    - **Success (201 Created):**\n        \n    \n\n```\n{    \"id\": 1,    \"username\": \"john_doe\",    \"email\": \"john.doe@example.com\"}\n\n ```\n\n- **Error Cases:**\n    \n    - `400 Bad Request`: Invalid input or validation errors in the request body.\n        \n    \n    - `401 Unauthorized`: Token is missing or invalid.\n        \n    \n    - `409 Conflict`: Username or email already exists.\n        \n    \n\n---\n\n### 2\\. **GET** **`/api/v1/protected/users/{userId}`**\n\n**Description:** Retrieve the information of a specific user by their ID.\n\n- **Method:** `GET`\n    \n\n- **Request:**\n    \n    - **URL:** `http://localhost:{port}/api/v1/protected/users/{userId}`\n        \n    \n    - **Headers:**\n        \n        - `Authorization: Bearer`\n            \n        \n    \n    - **Path Variable:**\n        \n        - `{userId}`: The ID of the user to retrieve.\n            \n        \n    \n\n- **Response:**\n    \n    - **Success (200 OK):**\n        \n    \n\n```\n{    \"id\": 1,    \"username\": \"john_doe\",    \"email\": \"john.doe@example.com\"}\n\n ```\n\n- **Error Cases:**\n    \n    - `401 Unauthorized`: Token is missing or invalid.\n        \n    \n    - `404 Not Found`: User with the given ID not found.\n        \n    \n\n---\n\n### 3\\. **PUT** **`/api/v1/protected/users/{userId}`**\n\n**Description:** Update the details of a specific user.\n\n- **Method:** `PUT`\n    \n\n- **Request:**\n    \n    - **URL:** `http://localhost:{port}/api/v1/protected/users/{userId}`\n        \n    \n    - **Headers:**\n        \n        - `Authorization: Bearer`\n            \n        \n        - `Content-Type: application/json`\n            \n        \n    \n    - **Path Variable:**\n        \n        - `{userId}`: The ID of the user to update.\n            \n        \n    \n    - **Body (JSON):**\n        \n    \n\n```\n{    \"email\": \"new.email@example.com\",    \"password\": \"newsecurepassword\"}\n\n ```\n\n- **Response:**\n    \n    - **Success (200 OK):**\n        \n    \n\n```\n{    \"id\": 1,    \"username\": \"john_doe\",    \"email\": \"new.email@example.com\"}\n\n ```\n\n- **Error Cases:**\n    \n    - `400 Bad Request`: Invalid input or validation errors in the request body.\n        \n    \n    - `401 Unauthorized`: Token is missing or invalid.\n        \n    \n    - `404 Not Found`: User with the given ID not found.\n        \n    \n\n---\n\n### 4\\. **DELETE** **`/api/v1/protected/users/{userId}`**\n\n**Description:** Delete a specific user by their ID.\n\n- **Method:** `DELETE`\n    \n\n- **Request:**\n    \n    - **URL:** `http://localhost:{port}/api/v1/protected/users/{userId}`\n        \n    \n    - **Headers:**\n        \n    - - `Authorization: Bearer`\n            \n    \n    - **Path Variable:**\n        \n        - `{userId}`: The ID of the user to delete.\n            \n    \n\n- **Response:**\n    \n    - **Success (204 No Content):** No response body.\n        \n    - **Error Cases:**\n        \n        - `401 Unauthorized`: Token is missing or invalid.\n            \n        - `404 Not Found`: User with the given ID not found.\n            \n\n---\n\n### 5\\. **GET** **`/api/v1/protected/users`**\n\n**Description:** Retrieve a list of all users.\n\n- **Method:** `GET`\n    \n\n- **Request:**\n    \n\n```\n- **URL:** `http://localhost:{port}/api/v1/protected/users`\n- **Headers:**  \n    - `Authorization: Bearer`  \n\n ```\n\n- **Response:**\n    \n- **Success (200 OK):**\n    \n\n```\n[    {        \"id\": 1,        \"username\": \"john_doe\",        \"email\": \"john.doe@example.com\"    },    {        \"id\": 2,        \"username\": \"jane_doe\",        \"email\": \"jane.doe@example.com\"    }]\n\n ```\n\n- **Error Cases:**\n    \n    - `401 Unauthorized`: Token is missing or invalid."
+		},
+		{
+			"name": "Team",
+			"item": [
+				{
+					"name": "Create a Team",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Dream Team\", \"city\": \"Kyiv\"}"
+						},
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/teams/{username}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"teams",
+								"{username}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Teams by Owner",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/teams/{username}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"teams",
+								"{username}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Team",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"Super Team\", \"city\": \"Odesa\"}"
+						},
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/teams/{teamId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"teams",
+								"{teamId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Team",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/teams/{teamId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"teams",
+								"{teamId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Soft Delete Team",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/teams/{teamId}/soft-delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"teams",
+								"{teamId}",
+								"soft-delete"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Here is the API documentation for the `TeamController` endpoints in **Markdown format** for Postman usage:\n\n---\n\n# TeamController API Documentation\n\n## Base URL\n\n  \n\n```\nhttp://localhost:{port}/api/v1/protected/teams\n\n ```\n\n---\n\n### 1\\. **POST** **`/api/v1/protected/teams/{username}`**\n\n**Description:** Create a new team for the given username.\n\n-   \n    \n- **Method:** `POST`\n    \n-   \n    \n- **Request:**  \n    \n    -   \n        \n    - **URL:** `http://localhost:{port}/api/v1/protected/teams/{username}`\n        \n    -   \n        \n    - **Headers:**  \n        \n        -   \n            \n        - `Authorization: Bearer`\n            \n        -   \n            \n        - `Content-Type: application/json`\n            \n        -   \n            \n    -   \n        \n    - **Path Variable:**  \n        \n        -   \n            \n        - `{username}`: The username for which the team should be created.\n            \n        -   \n            \n    -   \n        \n    - **Body (JSON):**\n        \n    -   \n        \n\n  \n\n```\n{    \"name\": \"Dream Team\",    \"city\": \"Kyiv\"}\n\n ```\n\n-   \n    \n- **Response:**  \n    \n    -   \n        \n    - **Success (200 OK):**\n        \n    -   \n        \n\n  \n\n```\n{    \"id\": 1,    \"name\": \"Dream Team\",    \"city\": \"Kyiv\",    \"owner\": \"username\"}\n\n ```\n\n-   \n    \n- **Error Cases:**  \n    \n    -   \n        \n    - `400 Bad Request`: Validation errors in the request body.\n        \n    -   \n        \n    - `401 Unauthorized`: Token is missing or invalid.\n        \n    -   \n        \n    - `404 Not Found`: Username not found.\n        \n    -   \n        \n\n---\n\n### 2\\. **GET** **`/api/v1/protected/teams/{username}`**\n\n**Description:** Retrieve a list of teams owned by the given username.\n\n-   \n    \n-   \n    \n    **Method:** `GET`\n    \n-   \n    \n-   \n    \n    **Request:**\n    \n    -   \n        \n    - **URL:** `http://localhost:{port}/api/v1/protected/teams/{username}`\n        \n    -   \n        \n    - **Headers:**  \n        \n        -   \n            \n        - `Authorization: Bearer`\n            \n        -   \n            \n    -   \n        \n    - **Path Variable:**  \n        \n        -   \n            \n        - `{username}`: The username whose teams need to be retrieved.\n            \n        -   \n            \n    -   \n        \n-   \n    \n-   \n    \n    **Response:**\n    \n    -   \n        \n    - **Success (200 OK):**\n        \n    -   \n        \n\n  \n\n```\n[    {        \"id\": 1,        \"name\": \"Dream Team\",        \"city\": \"Kyiv\",        \"owner\": \"username\"    },    {        \"id\": 2,        \"name\": \"Hero Squad\",        \"city\": \"Lviv\",        \"owner\": \"username\"    }]\n\n ```\n\n-   \n    \n- **Error Cases:**  \n    \n    -   \n        \n    - `401 Unauthorized`: Token is missing or invalid.\n        \n    -   \n        \n    - `404 Not Found`: Username not found or no teams exist.\n        \n    -   \n        \n\n---\n\n### 3\\. **PUT** **`/api/v1/protected/teams/{teamId}`**\n\n**Description:** Update the details of an existing team.\n\n-   \n    \n- **Method:** `PUT`\n    \n-   \n    \n- **Request:**  \n    \n    -   \n        \n    - **URL:** `http://localhost:{port}/api/v1/protected/teams/{teamId}`\n        \n    -   \n        \n    - **Headers:**  \n        \n        -   \n            \n        - `Authorization: Bearer`\n            \n        -   \n            \n        - `Content-Type: application/json`\n            \n        -   \n            \n    -   \n        \n    - **Path Variable:**  \n        \n        -   \n            \n        - `{teamId}`: The ID of the team to update.\n            \n        -   \n            \n    -   \n        \n    - **Body (JSON):**\n        \n    -   \n        \n\n  \n\n```\n{    \"name\": \"Super Team\",    \"city\": \"Odesa\"}\n\n ```\n\n-   \n    \n- **Response:**  \n    \n    -   \n        \n    - **Success (200 OK):**\n        \n    -   \n        \n\n  \n\n```\n{    \"id\": 1,    \"name\": \"Super Team\",    \"city\": \"Odesa\",    \"owner\": \"username\"}\n\n ```\n\n-   \n    \n- **Error Cases:**  \n    \n    -   \n        \n    - `400 Bad Request`: Validation errors in the request body.\n        \n    -   \n        \n    - `401 Unauthorized`: Token is missing or invalid.\n        \n    -   \n        \n    - `404 Not Found`: Team with the given ID not found.\n        \n    -   \n        \n\n---\n\n### 4\\. **DELETE** **`/api/v1/protected/teams/{teamId}`**\n\n**Description:** Delete a specific team by its ID.\n\n-   \n    \n-   \n    \n    **Method:** `DELETE`\n    \n-   \n    \n-   \n    \n    **Request:**\n    \n    -   \n        \n    - **URL:** `http://localhost:{port}/api/v1/protected/teams/{teamId}`\n        \n    -   \n        \n    - **Headers:**  \n        \n        -   \n            \n        - `Authorization: Bearer`\n            \n        -   \n            \n    -   \n        \n    - **Path Variable:**  \n        \n        -   \n            \n        - `{teamId}`: The ID of the team to delete.\n            \n        -   \n            \n    -   \n        \n-   \n    \n-   \n    \n    **Response:**\n    \n    -   \n        \n    -   \n        \n        **Success (204 No Content):** No response body.\n        \n    -   \n        \n    -   \n        \n        **Error Cases:**\n        \n        -   \n            \n        - `401 Unauthorized`: Token is missing or invalid.\n            \n        -   \n            \n        - `404 Not Found`: Team with the given ID not found.\n            \n        -   \n            \n    -   \n        \n\n---\n\n### 5\\. **PATCH** **`/api/v1/protected/teams/{teamId}/soft-delete`**\n\n**Description:** Soft-delete a specific team by its ID.\n\n-   \n    \n-   \n    \n    **Method:** `PATCH`\n    \n-   \n    \n-   \n    \n    **Request:**\n    \n    -   \n        \n    - **URL:** `http://localhost:{port}/api/v1/protected/teams/{teamId}/soft-delete`\n        \n    -   \n        \n    - **Headers:**  \n        \n        -   \n            \n        - `Authorization: Bearer`\n            \n        -   \n            \n    -   \n        \n    - **Path Variable:**  \n        \n        -   \n            \n        - `{teamId}`: The ID of the team to soft-delete.\n            \n        -   \n            \n    -   \n        \n-   \n    \n-   \n    \n    **Response:**\n    \n    -   \n        \n    - **Success (200 OK):**\n        \n    -   \n        \n\n  \n\n```\n{    \"id\": 1,    \"name\": \"Dream Team\",    \"city\": \"Kyiv\",    \"owner\": \"username\",    \"isDeleted\": true}\n\n ```\n\n-   \n    \n- **Error Cases:**  \n    \n    -   \n        \n    - `401 Unauthorized`: Token is missing or invalid.\n        \n    -   \n        \n    - `404 Not Found`: Team with the given ID not found.\n        \n    -"
+		},
+		{
+			"name": "Player",
+			"item": [
+				{
+					"name": "Add Player to Team",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"John Doe\", \"position\": \"Forward\", \"salary\": 5000}"
+						},
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/players/{teamId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"players",
+								"{teamId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Players by Team",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/players/{teamId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"players",
+								"{teamId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Player",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\": \"John Smith\", \"position\": \"Defender\", \"salary\": 4500}"
+						},
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/players/{playerId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"players",
+								"{playerId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Player",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/players/{playerId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"players",
+								"{playerId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer Player",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer <Your_JWT_Token>",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:{port}/api/v1/protected/players/{playerId}/transfer/{teamId}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "{port}",
+							"path": [
+								"api",
+								"v1",
+								"protected",
+								"players",
+								"{playerId}",
+								"transfer",
+								"{teamId}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get JWT Token",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "5uklhvdk31tc1u27t9nkcq7v2t",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "clientSecret",
+							"value": "25k08r5oi73c1so014hr4evkpslhj1f5qbufsf514matb50bai4",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://eu-north-1cfgzvxft9.auth.eu-north-1.amazoncognito.com/oauth2/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://eu-north-1cfgzvxft9.auth.eu-north-1.amazoncognito.com/oauth2/authorize",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "authUrl",
+				"value": "https://eu-north-1cfgzvxft9.auth.eu-north-1.amazoncognito.com/oauth2/authorize",
+				"type": "string"
+			},
+			{
+				"key": "refreshRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "tokenRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "authRequestParams",
+				"value": [],
+				"type": "any"
+			},
+			{
+				"key": "challengeAlgorithm",
+				"value": "S256",
+				"type": "string"
+			},
+			{
+				"key": "useBrowser",
+				"value": true,
+				"type": "boolean"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "25k08r5oi73c1so014hr4evkpslhj1f5qbufsf514matb50bai4",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "5uklhvdk31tc1u27t9nkcq7v2t",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "client_authentication",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://eu-north-1cfgzvxft9.auth.eu-north-1.amazoncognito.com/oauth2/token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}

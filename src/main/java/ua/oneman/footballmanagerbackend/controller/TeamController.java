@@ -47,5 +47,4 @@ public class TeamController {
         return ResponseEntity.ok(teamService.removeTeam(teamId));
     }
 
-    
 }

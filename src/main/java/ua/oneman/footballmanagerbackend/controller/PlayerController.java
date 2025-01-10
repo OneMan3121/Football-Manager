@@ -3,11 +3,11 @@ package ua.oneman.footballmanagerbackend.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import ua.oneman.footballmanagerbackend.dto.req.PlayerReqDTO;
 import ua.oneman.footballmanagerbackend.dto.resp.PlayerRespDTO;
 import ua.oneman.footballmanagerbackend.service.PlayerService;
-import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -54,6 +54,6 @@ public class PlayerController {
             @PathVariable Long buyerTeamId,
             Authentication authentication) {
         playerService.transferPlayer(playerId, buyerTeamId, authentication);
-        return ResponseEntity.ok().build(); // Повертаємо 200 OK
+        return ResponseEntity.ok().build();
     }
 }

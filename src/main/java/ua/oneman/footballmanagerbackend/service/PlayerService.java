@@ -26,7 +26,6 @@ public class PlayerService {
     private final TeamRepository teamRepository;
     private final PlayerMapper playerMapper;
 
-
     public PlayerRespDTO createPlayer(Long teamId, PlayerReqDTO playerReqDTO) {
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(() -> new IllegalArgumentException("Team not found with ID: " + teamId));
@@ -80,7 +79,6 @@ public class PlayerService {
         Player player = playerRepository.findById(playerId)
                 .orElseThrow(() -> new IllegalArgumentException("Player not found with ID: " + playerId));
 
-        // Отримуємо поточне ім'я користувача з Authentication (власника команди)
         String ownerUsername = authentication.getName();
 
         Team sellerTeam = player.getTeam();
@@ -91,36 +89,28 @@ public class PlayerService {
         Team buyerTeam = teamRepository.findById(buyerTeamId)
                 .orElseThrow(() -> new IllegalArgumentException("Buyer team not found with ID: " + buyerTeamId));
 
-        // Перевірка, чи є власник тієї команди, що купує
         if (!buyerTeam.getOwner().getUsername().equals(ownerUsername)) {
             throw new SecurityException("You are not the owner of the buying team.");
         }
 
-        // Перевірка, чи є власник тієї команди, що продає (за необхідності)
         if (sellerTeam.getOwner().getUsername().equals(ownerUsername)) {
             throw new IllegalArgumentException("You cannot buy from a team that you own.");
         }
 
-        // Розрахунок вартості трансферу
         BigDecimal transferValue = calculateTransferValue(player);
 
-        // Додавання комісії
         BigDecimal commissionValue = transferValue.multiply(BigDecimal.valueOf(sellerTeam.getCommissionPercentage() / 100));
         BigDecimal totalCost = transferValue.add(commissionValue);
 
-        // Перевірити, чи достатньо коштів у покупця
         if (buyerTeam.getBalance().compareTo(totalCost) < 0) {
             throw new IllegalArgumentException("Buyer team has insufficient funds for this transfer.");
         }
 
-        // Виконати фінансові операції (зняття коштів у покупця, додавання у продавця)
         buyerTeam.setBalance(buyerTeam.getBalance().subtract(totalCost));
         sellerTeam.setBalance(sellerTeam.getBalance().add(totalCost));
 
-        // Оновлення інформації про команду у гравця
         player.setTeam(buyerTeam);
 
-        // Зберегти зміни
         playerRepository.save(player);
         teamRepository.save(sellerTeam);
         teamRepository.save(buyerTeam);

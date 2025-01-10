@@ -18,7 +18,7 @@ public class CognitoUserInfoService {
 
     public CognitoUserInfoService(RestTemplate restTemplate, @Value("${cognito.user-info-endpoint}") String userInfoEndpoint) {
         this.restTemplate = restTemplate;
-        this.userInfoEndpoint = userInfoEndpoint; // Використовуємо явно UserInfo Endpoint
+        this.userInfoEndpoint = userInfoEndpoint;
     }
 
     public Map<String, Object> getUserInfo(String accessToken) {
@@ -26,7 +26,6 @@ public class CognitoUserInfoService {
         headers.setBearerAuth(accessToken);
         HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
 
-        // Виконуємо запит на UserInfo Endpoint
         ResponseEntity<Map> response = restTemplate.exchange(
                 userInfoEndpoint,
                 HttpMethod.GET,

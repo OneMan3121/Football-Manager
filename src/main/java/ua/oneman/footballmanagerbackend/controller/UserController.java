@@ -27,7 +27,7 @@ public class UserController {
         } catch (UserNotFoundException e) {
             return ResponseEntity.status(404).body(e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Не вдалося отримати інформацію про користувача.");
+            return ResponseEntity.status(500).body("Failed to retrieve user information.");
         }
     }
 
@@ -36,13 +36,6 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    /**
-     * Оновлення даних авторизованого користувача (лише для себе).
-     * @param username - ім'я користувача.
-     * @param userUpdateReqDTO - Оновлення даних.
-     * @param authentication - Дані авторизації.
-     * @return Оновлений користувач у форматі DTO.
-     */
     @PutMapping("/{username}")
     public ResponseEntity<PrivateUserRespDTO> updateUser(
             @PathVariable String username,
@@ -53,12 +46,6 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    /**
-     * Видалення облікового запису авторизованим користувачем.
-     * @param username - Ім'я користувача.
-     * @param authentication - Дані авторизації.
-     * @return HTTP 204 (No Content).
-     */
     @DeleteMapping("/{username}")
     public ResponseEntity<Void> deleteUser(
             @PathVariable String username,
@@ -67,12 +54,6 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    /**
-     * Soft-deletes a user by marking them as deleted instead of removing them.
-     * @param username - Username of the user.
-     * @param authentication - Authorization info.
-     * @return HTTP 204 (No Content).
-     */
     @DeleteMapping("/soft-delete/{username}")
     public ResponseEntity<Void> softDeleteUser(
             @PathVariable String username,
@@ -81,6 +62,5 @@ public class UserController {
         userService.softDeleteUserByUsername(username, authentication);
         return ResponseEntity.noContent().build();
     }
-
 
 }
