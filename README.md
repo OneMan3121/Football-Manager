@@ -1,33 +1,73 @@
-# Football Teams Management System
+# Team and Player Management API
 
-This is a test project for managing football teams and players, built with Java, Spring Boot, and MariaDB. The project includes basic CRUD operations and integration with Amazon Cognito for authentication.
+This project implements a RESTful API for managing **Users**, **Teams**, and **Players** using Jakarta EE, Spring Data JPA, Spring MVC, and other modern Java tools.
 
 ---
 
 ## Features
 
-- Create, update, view, and delete teams and players.
-- Authentication and authorization using Amazon Cognito.
-- Data storage with MariaDB.
+- **User Management**:
+    - Create, retrieve, update, delete users.
+    - Fetch all users.
+- **Team Management**:
+    - Create teams for users.
+    - Retrieve teams for a specific user.
+    - Update, delete, and soft-delete teams.
+- **Player Management**:
+    - Add players to teams.
+    - List players in a specific team.
+    - Update, delete, and transfer players between teams.
+- Includes secured endpoints using JWT for authentication.
 
 ---
 
-## Technologies
+## Technologies Used
 
 - **Java 17**
-- **Spring Boot 3.1.0**
-    - Spring Web
-    - Spring Data JPA
-    - Spring Security
+- **Spring Boot**
+- **Spring Data JPA**
+- **Spring MVC**
+- **Jakarta EE**
+- **Lombok**
 - **Hibernate**
-- **MariaDB** (hosted on AWS RDS)
-- **Amazon Cognito** (OAuth2/OpenID Connect)
+- **Postman** (for API testing)
+- **Maven** (build tool)
 
 ---
 
-## How to Run the Project
+## Quick Start Guide
 
-1. **Clone the repository**:
+### Prerequisites
+1. Install **Java 17**.
+2. Install **Maven**.
+3. Set up a database (e.g., `MySQL`, `PostgreSQL`, etc.).
+4. Ensure you have **Postman** for API testing (optional).
+
+### How to Run
+1. Clone the repository:
    ```bash
-   git clone https://github.com/OneMan3121/Football-Manager.git
-   cd Football-Manager
+   git clone https://github.com/your-username/your-repository.git
+   cd your-repository
+   ```
+
+2. Configure application properties:
+    - Open `src/main/resources/application.properties` and set up your database configuration:
+      ```properties
+      spring.datasource.url=jdbc:mysql://localhost:3306/team_player_db
+      spring.datasource.username=your-username
+      spring.datasource.password=your-password
+      spring.jpa.hibernate.ddl-auto=update
+      ```
+    - Customize any additional settings (e.g., JWT secret, server port).
+
+3. Compile and run the application:
+   ```bash
+   mvn spring-boot:run
+   ```
+
+4. The application should run on:
+   ```
+   http://localhost:8080
+   ```
+
+---
