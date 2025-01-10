@@ -12,12 +12,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // Налаштування HttpSecurity
         http
-                .csrf(csrf -> csrf.disable()) // CSRF вимкнено для зручності
+                .csrf(csrf -> csrf.disable()) // Вимкнення CSRF
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/v1/public/**").permitAll() // Відкриті ендпоінти
-                        .anyRequest().authenticated() // Усі інші запити потребують авторизації
+                        .anyRequest().authenticated() // Усі інші запити потребують валідного токена
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())) // Налаштування JWT
@@ -26,17 +25,9 @@ public class SecurityConfig {
         return http.build();
     }
 
-    /**
-     * Конвертер для роботи з ролями/групами Cognito.
-     */
+    // Конвертер аутентифікації
     private JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        // Додаємо стандартний префікс "ROLE_" для груп
-        grantedAuthoritiesConverter.setAuthorityPrefix("ROLE_");
-        grantedAuthoritiesConverter.setAuthoritiesClaimName("cognito:groups"); // Групи з токена Cognito
-
-        JwtAuthenticationConverter authenticationConverter = new JwtAuthenticationConverter();
-        authenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
-        return authenticationConverter;
+        // Використовуємо стандартний конвертер для мінімальних потреб – без ролей
+        return new JwtAuthenticationConverter();
     }
 }

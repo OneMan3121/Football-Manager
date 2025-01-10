@@ -11,7 +11,7 @@ import ua.oneman.footballmanagerbackend.service.TeamService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/teams")
+@RequestMapping("/api/v1/protected/teams")
 @RequiredArgsConstructor
 public class TeamController {
 

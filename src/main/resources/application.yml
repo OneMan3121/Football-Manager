@@ -19,3 +19,12 @@ aws:
     access-key: ${S3_ACCESS_KEY}
     secret-key: ${S3_SECRET_KEY}
 
+
+cognito:
+  user-info-endpoint: https://eu-north-1cfgzvxft9.auth.eu-north-1.amazoncognito.com/oauth2/userInfo
+logging:
+  level:
+    org.springframework.security: DEBUG # Увімкнення повного рівня дебагу для Spring Security
+    org.springframework.security.oauth2: DEBUG # Додатковий дебаг для роботи з токенами Oauth2
+    com.yourpackage: DEBUG # Замініть "com.yourpackage" на корінний пакет вашого додатку, якщо хочете дебажити логіку API
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG # Вивід HTTP-запитів у логах

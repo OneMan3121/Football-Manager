@@ -12,7 +12,7 @@ import org.springframework.security.core.Authentication;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/players")
+@RequestMapping("/api/v1/protected/players")
 @RequiredArgsConstructor
 public class PlayerController {
 
