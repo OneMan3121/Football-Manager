@@ -25,6 +25,8 @@ public class SecurityConfig {
     }
 
     private JwtAuthenticationConverter jwtAuthenticationConverter() {
-        return new JwtAuthenticationConverter();
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+        converter.setPrincipalClaimName("username");
+        return converter;
     }
 }
