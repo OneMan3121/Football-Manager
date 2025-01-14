@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 
 @Data
 public class PrivateUserRespDTO {
-    private Long id;
     private String username;
     private String firstName;
     private String lastName;

@@ -21,7 +21,7 @@ aws:
 
 
 cognito:
-  user-info-endpoint: https://eu-north-1cfgzvxft9.auth.eu-north-1.amazoncognito.com/oauth2/userInfo
+
 logging:
   level:
     org.springframework.security: DEBUG # Увімкнення повного рівня дебагу для Spring Security

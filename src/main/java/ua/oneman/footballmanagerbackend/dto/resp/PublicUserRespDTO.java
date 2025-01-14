@@ -2,6 +2,8 @@ package ua.oneman.footballmanagerbackend.dto.resp;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class PublicUserRespDTO {
     private Long id;
@@ -9,4 +11,6 @@ public class PublicUserRespDTO {
     private String firstName;
     private String lastName;
     private String avatarUrl;
+
+    private List<PublicTeamRespDTO> teams;
 }

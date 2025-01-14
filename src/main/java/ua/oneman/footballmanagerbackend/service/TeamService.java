@@ -23,7 +23,7 @@ public class TeamService {
     private final TeamMapper teamMapper;
 
     public TeamRespDTO createTeam(String username, TeamReqDTO teamReqDTO) {
-        User owner = userRepository.findByUsername(username)
+        User owner = userRepository.findByUsernameAndIsDeletedFalse(username)
                 .orElseThrow(() -> new IllegalArgumentException("User not found with username: " + username));
 
         Team team = teamMapper.toEntity(teamReqDTO);

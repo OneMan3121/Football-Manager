@@ -14,4 +14,6 @@ public class UserUpdateReqDTO {
 
     @Size(max = 100, message = "Email must not exceed 100 characters")
     private String email;
+
+    private String avatarUrl;
 }

@@ -20,6 +20,9 @@ public class Team {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column
+    String logoUrl;
+
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal balance;
 
