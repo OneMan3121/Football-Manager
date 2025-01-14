@@ -1,4 +1,4 @@
-package ua.oneman.footballmanagerbackend.controller;
+package ua.oneman.footballmanagerbackend.controller.secured;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

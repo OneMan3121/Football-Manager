@@ -79,4 +79,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleIllegalArgument(IllegalArgumentException ex) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
     }
+
+    @ExceptionHandler(TeamNotFoundException.class)
+    public ResponseEntity<String> handleTeamNotFound(TeamNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Team not found: " + ex.getMessage());
+    }
 }

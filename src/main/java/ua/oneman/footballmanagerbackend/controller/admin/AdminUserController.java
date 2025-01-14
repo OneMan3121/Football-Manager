@@ -1,4 +1,4 @@
-package ua.oneman.footballmanagerbackend.controller;
+package ua.oneman.footballmanagerbackend.controller.admin;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

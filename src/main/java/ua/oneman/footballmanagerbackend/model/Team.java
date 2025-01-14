@@ -30,7 +30,7 @@ public class Team {
     private Double commissionPercentage;
 
     @OneToMany
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "currentTeam")
     private List<Player> players;
 
     @ManyToOne

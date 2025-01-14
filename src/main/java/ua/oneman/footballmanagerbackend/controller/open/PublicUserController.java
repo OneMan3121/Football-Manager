@@ -1,4 +1,4 @@
-package ua.oneman.footballmanagerbackend.controller;
+package ua.oneman.footballmanagerbackend.controller.open;
 
 
 import lombok.RequiredArgsConstructor;
@@ -8,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.oneman.footballmanagerbackend.dto.resp.PublicUserRespDTO;
 import ua.oneman.footballmanagerbackend.service.UserService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/public/users")
