@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import ua.oneman.footballmanagerbackend.dto.req.UserUpdateReqDTO;
-import ua.oneman.footballmanagerbackend.dto.resp.PrivateUserRespDTO;
+import ua.oneman.footballmanagerbackend.dto.resp.secured.PrivateUserRespDTO;
 import ua.oneman.footballmanagerbackend.service.UserService;
 
 @RestController

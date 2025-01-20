@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ua.oneman.footballmanagerbackend.dto.resp.PublicUserRespDTO;
+import ua.oneman.footballmanagerbackend.dto.resp.open.PublicUserRespDTO;
 import ua.oneman.footballmanagerbackend.service.UserService;
 
 @RestController

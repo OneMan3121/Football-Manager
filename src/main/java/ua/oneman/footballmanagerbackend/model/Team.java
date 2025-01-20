@@ -1,7 +1,6 @@
 package ua.oneman.footballmanagerbackend.model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -27,7 +26,7 @@ public class Team {
     private BigDecimal balance;
 
     @Column(name = "commission_percentage", nullable = false)
-    private Double commissionPercentage;
+    private Double commissionPercentage = 0.0;
 
     @OneToMany
     @JoinColumn(name = "currentTeam")

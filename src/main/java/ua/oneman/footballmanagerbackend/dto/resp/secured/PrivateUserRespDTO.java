@@ -1,4 +1,4 @@
-package ua.oneman.footballmanagerbackend.dto.resp;
+package ua.oneman.footballmanagerbackend.dto.resp.secured;
 
 import lombok.Data;
 

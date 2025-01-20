@@ -3,18 +3,15 @@ package ua.oneman.footballmanagerbackend.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import ua.oneman.footballmanagerbackend.dto.req.UserUpdateReqDTO;
-import ua.oneman.footballmanagerbackend.dto.resp.PrivateUserRespDTO;
-import ua.oneman.footballmanagerbackend.dto.resp.PublicUserRespDTO;
+import ua.oneman.footballmanagerbackend.dto.resp.secured.PrivateUserRespDTO;
+import ua.oneman.footballmanagerbackend.dto.resp.open.PublicUserRespDTO;
 import ua.oneman.footballmanagerbackend.exception.UserNotFoundException;
 import ua.oneman.footballmanagerbackend.mapper.UserMapper;
 import ua.oneman.footballmanagerbackend.model.User;
 import ua.oneman.footballmanagerbackend.repository.UserRepository;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

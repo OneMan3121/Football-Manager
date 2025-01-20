@@ -84,4 +84,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleTeamNotFound(TeamNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Team not found: " + ex.getMessage());
     }
+
+    @ExceptionHandler(PlayerNotFoundException.class)
+    public ResponseEntity<String> handlePlayerNotFound(PlayerNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Player not found: " + ex.getMessage());
+    }
 }
